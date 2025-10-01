@@ -3,141 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flamingo Games — Game Studio</title>
-  <meta name="description" content="Flamingo Games is an independent game studio crafting focused, player‑first experiences." />
-  <meta property="og:title" content="Flamingo Games — Game Studio" />
-  <meta property="og:description" content="Independent game studio crafting focused, player‑first experiences." />
-  <meta property="og:type" content="website" />
+  <title>Flamingo — Game Studio</title>
+  <meta name="description" content="Flamingo is a small studio crafting hyper‑casual games with clean mechanics and strong game feel." />
   <meta name="color-scheme" content="light dark" />
   <style>
-    :root {
-      --bg: #0b0c10;
-      --card: #111318;
-      --text: #e7e9ee;
-      --muted: #a9afbd;
-      --accent: #ff4d6d; /* flamingo vibe */
-      --accent-2: #ffd166; /* soft contrast */
-      --maxw: 980px;
+    :root{
+      --bg:#0b0c10;--text:#e8ebf2;--muted:#a7afbe;--line:#1a1d24;--accent:#ff4d6d;--maxw:880px
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial;line-height:1.6;color:var(--text);
+      background:var(--bg)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .topbar{height:56px;display:flex;align-items:center}
+    .brand{font-weight:800;letter-spacing:.2px}
+    main{display:flex;flex-direction:column;gap:56px}
+    section{padding:40px 0}
+    .center{text-align:center}
+
+    /* HERO with background image */
+    .hero{position:relative;padding:84px 0;border-bottom:1px solid var(--line);
       background:
-        radial-gradient(60vw 60vw at 90% -10%, rgba(255,77,109,0.12), transparent 60%),
-        radial-gradient(40vw 40vw at -10% 10%, rgba(255,209,102,0.10), transparent 60%),
+        radial-gradient(60vw 60vw at 90% -10%, rgba(255,77,109,.12), transparent 60%),
         var(--bg);
-      line-height: 1.55;
+      overflow:hidden;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, main, footer { width: 100%; }
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .3px; }
-    .logo {
-      width: 36px; height: 36px; border-radius: 12px;
-      background: conic-gradient(from 210deg, var(--accent), var(--accent-2), var(--accent));
-      display: grid; place-items: center; color: #000; font-size: 18px; font-weight: 800;
-      box-shadow: 0 10px 30px rgba(255,77,109,.25);
+    .hero::before{ /* background image layer */
+      content:"";position:absolute;inset:0;
+      background-image: url('heroBackground.png');
+      background-size: cover; background-position: center; background-repeat:no-repeat;
+      opacity:.18; /* subtle, so text is readable */
+      filter: saturate(1.1) contrast(1.05);
+      z-index:0;
     }
-    .nav a { color: var(--text); opacity: .85; }
-    .btn { display: inline-block; padding: 10px 16px; border-radius: 14px; background: var(--accent); color: #0b0c10; font-weight: 700; box-shadow: 0 6px 16px rgba(255,77,109,.25); }
-    .btn:hover { text-decoration: none; filter: brightness(1.05); }
+    .hero::after{ /* dark gradient overlay for readability */
+      content:"";position:absolute;inset:0;z-index:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;z-index:1}
+    .hero-logo{width:84px;height:84px;border-radius:22px;margin:8px auto 16px;display:grid;place-items:center;
+      background:conic-gradient(from 210deg,var(--accent),#ffd166,var(--accent));color:#0b0c10;font-weight:900;font-size:36px;
+      box-shadow:0 10px 30px rgba(255,77,109,.25)}
+    h1{font-size:clamp(28px,5vw,48px);margin:0 0 10px}
+    p.sub{color:var(--muted);max-width:700px;margin:0 auto 0}
+    h2{font-size:clamp(22px,3.5vw,28px);margin:0 0 10px;text-align:center}
 
-    .hero { padding: 64px 0 40px; text-align: center; }
-    .kicker { color: var(--accent-2); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; }
-    h1 { font-size: clamp(28px, 6vw, 56px); line-height: 1.05; margin: 12px 0 12px; }
-    .subtitle { color: var(--muted); font-size: clamp(15px, 2.5vw, 18px); max-width: 820px; margin: 0 auto; }
-
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; margin: 40px 0 16px; }
-    .card { background: color-mix(in oklab, var(--card) 90%, black 10%); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px; }
-    .card h3 { margin: 8px 0 6px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    .split { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; margin: 32px 0; }
-    @media (min-width: 900px) { .split { grid-template-columns: 1.3fr .7fr; } }
-    .pill { display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border: 1px dashed rgba(255,255,255,.15); border-radius: 999px; color: var(--muted); font-size: 13px; }
-
-    footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 48px; }
-    .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden>FG</div>
-        <span>Flamingo Games</span>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        &nbsp;&nbsp;·&nbsp;&nbsp;
-        <a href="#games">Games</a>
-        &nbsp;&nbsp;·&nbsp;&nbsp;
-        <a class="btn" href="#contact">Contact</a>
-      </nav>
+    <div class="container topbar">
+      <div class="brand">Flamingo</div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="kicker">Independent Game Studio</div>
-        <h1>Focused, player‑first games.</h1>
-        <p class="subtitle">We’re a small studio building tight, polished experiences without bloat, pop‑ups, or data harvesting. One page, one promise: good games.</p>
-        <p style="margin-top:22px"><a class="btn" href="#contact">Get in touch</a></p>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner center">
+        <div class="hero-logo" aria-hidden>F</div>
+        <h1>Flamingo Games</h1>
+        <p class="sub">A tiny studio making elegant hyper‑casual games with fast feedback, clean loops, and satisfying feel — no bloat, no trackers.</p>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
-      <div class="container split">
-        <div>
-          <h2>About</h2>
-          <p>Flamingo Games is an independent studio focused on smart scope, strong feel, and crisp visuals. We prototype fast, test with real players, and cut anything that doesn’t serve the core loop.</p>
-          <div class="cards">
-            <div class="card"><h3>No trackers</h3><p>No analytics, cookies, or ad scripts on this site.</p></div>
-            <div class="card"><h3>Small & nimble</h3><p>Short feedback cycles, shipping early and often.</p></div>
-            <div class="card"><h3>PC first</h3><p>Targeting Windows/Linux; consoles when it makes sense.</p></div>
-          </div>
-        </div>
-        <div>
-          <div class="pill" title="You can replace this with a real image later">🎮 Studio snapshot coming soon</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="games">
       <div class="container">
-        <h2>Games</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>Project One</h3>
-            <p>Teaser text. Replace with your current flagship or upcoming title.</p>
-          </div>
-          <div class="card">
-            <h3>Project Two</h3>
-            <p>Optional second slot. Or keep it minimal with one project.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Business inquiries: <a href="mailto:f.mob.games@gmail.com">f.mob.games@gmail.com</a></p>
-        <p class="pill">Tip: set a real email later. This page collects no data.</p>
+        <h2>About</h2>
+        <p class="sub">We build <strong>hyper‑casual</strong> titles with a strong focus on clarity and game feel. We iterate quickly, test with real players, and keep only what serves the core loop.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container foot">
-      <div>© <span id="y"></span> Flamingo Games</div>
-      <div><a href="#">Back to top ↑</a></div>
+    <div class="container footer-inner">
+      <div>Contact: <a href="mailto:hello@flamingogames.studio">hello@flamingogames.studio</a></div>
+      <div>© <span id="y"></span> Flamingo</div>
     </div>
   </footer>
 
