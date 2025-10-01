@@ -1,96 +1,200 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flamingo — Game Studio</title>
-  <meta name="description" content="Flamingo is a small studio crafting hyper‑casual games with clean mechanics and strong game feel." />
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    :root{
-      --bg:#0b0c10;--text:#e8ebf2;--muted:#a7afbe;--line:#1a1d24;--accent:#ff4d6d;--maxw:880px
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial;line-height:1.6;color:var(--text);
-      background:var(--bg)}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-    header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
-    .topbar{height:56px;display:flex;align-items:center}
-    .brand{font-weight:800;letter-spacing:.2px}
-    main{display:flex;flex-direction:column;gap:56px}
-    section{padding:40px 0}
-    .center{text-align:center}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flamingo — Game Studio</title>
+    <meta name="description" content="Flamingo is a small studio crafting hyper‑casual games with clean mechanics and strong game feel." />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+        :root {
+            --bg: #0b0c10;
+            --text: #e8ebf2;
+            --muted: #a7afbe;
+            --line: #1a1d24;
+            --accent: #ff4d6d;
+            --maxw: 880px
+        }
 
-    /* HERO with background image */
-    .hero{position:relative;padding:84px 0;border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(60vw 60vw at 90% -10%, rgba(255,77,109,.12), transparent 60%),
-        var(--bg);
-      overflow:hidden;
-    }
-    .hero::before{ /* background image layer */
-      content:"";position:absolute;inset:0;
-      background-image: url('heroBackground.png');
-      background-size: cover; background-position: center; background-repeat:no-repeat;
-      opacity:.18; /* subtle, so text is readable */
-      filter: saturate(1.1) contrast(1.05);
-      z-index:0;
-    }
-    .hero::after{ /* dark gradient overlay for readability */
-      content:"";position:absolute;inset:0;z-index:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
-      pointer-events:none;
-    }
-    .hero-inner{position:relative;z-index:1}
-    .hero-logo{width:84px;height:84px;border-radius:22px;margin:8px auto 16px;display:grid;place-items:center;
-      background:conic-gradient(from 210deg,var(--accent),#ffd166,var(--accent));color:#0b0c10;font-weight:900;font-size:36px;
-      box-shadow:0 10px 30px rgba(255,77,109,.25)}
-    h1{font-size:clamp(28px,5vw,48px);margin:0 0 10px}
-    p.sub{color:var(--muted);max-width:700px;margin:0 auto 0}
-    h2{font-size:clamp(22px,3.5vw,28px);margin:0 0 10px;text-align:center}
+        * {
+            box-sizing: border-box
+        }
 
-    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-  </style>
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg)
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        header {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255,255,255,.02)
+        }
+
+        .topbar {
+            height: 56px;
+            display: flex;
+            align-items: center
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: .2px
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 56px
+        }
+
+        section {
+            padding: 40px 0
+        }
+
+        .center {
+            text-align: center
+        }
+
+        /* HERO enlarged to 70% of viewport height */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url('heroBackground.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: .25;
+                z-index: 0;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background: linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.7));
+                pointer-events: none;
+            }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1
+        }
+
+        .hero-logo {
+            display: none
+        }
+
+        .hero-logo-img {
+            display: block;
+            margin: 0 auto 14px;
+            max-width: min(520px,60vw);
+            height: auto;
+            image-rendering: auto;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,.35));
+        }
+
+        h1 {
+            font-size: clamp(32px,6vw,64px);
+            margin: 0 0 10px
+        }
+
+        p.sub {
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 0;
+            font-size: clamp(16px,2vw,20px)
+        }
+
+        h2 {
+            font-size: clamp(22px,3.5vw,28px);
+            margin: 0 0 10px;
+            text-align: center
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 24px 0;
+            color: var(--muted)
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+            a:hover {
+                text-decoration: underline
+            }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container topbar">
-      <div class="brand">Flamingo</div>
-    </div>
-  </header>
+    <header>
+        <div class="container topbar">
+            <div class="brand">Flamingo</div>
+        </div>
+    </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="container hero-inner center">
-        <div class="hero-logo" aria-hidden>F</div>
-        <h1>Flamingo Games</h1>
-        <p class="sub">A tiny studio making elegant hyper‑casual games with fast feedback, clean loops, and satisfying feel — no bloat, no trackers.</p>
-      </div>
-    </section>
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="container hero-inner">
+                <img class="hero-logo-img" src="studioLogo.png" alt="Flamingo Games logo" />
+                <p class="sub">A tiny studio making elegant hyper‑casual games with fast feedback, clean loops, and satisfying feel — no bloat, no trackers.</p>
+            </div>
+        </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <h2>About</h2>
-        <p class="sub">We build <strong>hyper‑casual</strong> titles with a strong focus on clarity and game feel. We iterate quickly, test with real players, and keep only what serves the core loop.</p>
-      </div>
-    </section>
-  </main>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <p class="sub">We build <strong>hyper‑casual</strong> titles with a strong focus on clarity and game feel. We iterate quickly, test with real players, and keep only what serves the core loop.</p>
+            </div>
+        </section>
+    </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <div>Contact: <a href="mailto:hello@flamingogames.studio">hello@flamingogames.studio</a></div>
-      <div>© <span id="y"></span> Flamingo</div>
-    </div>
-  </footer>
+    <footer>
+        <div class="container footer-inner">
+            <div>Contact: <a href="mailto:hello@flamingogames.studio">hello@flamingogames.studio</a></div>
+            <div>© <span id="y"></span> Flamingo</div>
+        </div>
+    </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
