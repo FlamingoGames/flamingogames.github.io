@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flamingo Games — Game Studio</title>
+  <meta name="description" content="Flamingo Games is an independent game studio crafting focused, player‑first experiences." />
+  <meta property="og:title" content="Flamingo Games — Game Studio" />
+  <meta property="og:description" content="Independent game studio crafting focused, player‑first experiences." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #111318;
+      --text: #e7e9ee;
+      --muted: #a9afbd;
+      --accent: #ff4d6d; /* flamingo vibe */
+      --accent-2: #ffd166; /* soft contrast */
+      --maxw: 980px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(60vw 60vw at 90% -10%, rgba(255,77,109,0.12), transparent 60%),
+        radial-gradient(40vw 40vw at -10% 10%, rgba(255,209,102,0.10), transparent 60%),
+        var(--bg);
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, main, footer { width: 100%; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .3px; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 12px;
+      background: conic-gradient(from 210deg, var(--accent), var(--accent-2), var(--accent));
+      display: grid; place-items: center; color: #000; font-size: 18px; font-weight: 800;
+      box-shadow: 0 10px 30px rgba(255,77,109,.25);
+    }
+    .nav a { color: var(--text); opacity: .85; }
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 14px; background: var(--accent); color: #0b0c10; font-weight: 700; box-shadow: 0 6px 16px rgba(255,77,109,.25); }
+    .btn:hover { text-decoration: none; filter: brightness(1.05); }
+
+    .hero { padding: 64px 0 40px; text-align: center; }
+    .kicker { color: var(--accent-2); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; }
+    h1 { font-size: clamp(28px, 6vw, 56px); line-height: 1.05; margin: 12px 0 12px; }
+    .subtitle { color: var(--muted); font-size: clamp(15px, 2.5vw, 18px); max-width: 820px; margin: 0 auto; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; margin: 40px 0 16px; }
+    .card { background: color-mix(in oklab, var(--card) 90%, black 10%); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 18px; }
+    .card h3 { margin: 8px 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .split { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; margin: 32px 0; }
+    @media (min-width: 900px) { .split { grid-template-columns: 1.3fr .7fr; } }
+    .pill { display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border: 1px dashed rgba(255,255,255,.15); border-radius: 999px; color: var(--muted); font-size: 13px; }
+
+    footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 48px; }
+    .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden>FG</div>
+        <span>Flamingo Games</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="#games">Games</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="kicker">Independent Game Studio</div>
+        <h1>Focused, player‑first games.</h1>
+        <p class="subtitle">We’re a small studio building tight, polished experiences without bloat, pop‑ups, or data harvesting. One page, one promise: good games.</p>
+        <p style="margin-top:22px"><a class="btn" href="#contact">Get in touch</a></p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container split">
+        <div>
+          <h2>About</h2>
+          <p>Flamingo Games is an independent studio focused on smart scope, strong feel, and crisp visuals. We prototype fast, test with real players, and cut anything that doesn’t serve the core loop.</p>
+          <div class="cards">
+            <div class="card"><h3>No trackers</h3><p>No analytics, cookies, or ad scripts on this site.</p></div>
+            <div class="card"><h3>Small & nimble</h3><p>Short feedback cycles, shipping early and often.</p></div>
+            <div class="card"><h3>PC first</h3><p>Targeting Windows/Linux; consoles when it makes sense.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="pill" title="You can replace this with a real image later">🎮 Studio snapshot coming soon</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="container">
+        <h2>Games</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Project One</h3>
+            <p>Teaser text. Replace with your current flagship or upcoming title.</p>
+          </div>
+          <div class="card">
+            <h3>Project Two</h3>
+            <p>Optional second slot. Or keep it minimal with one project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Business inquiries: <a href="mailto:hello@flamingogames.studio">hello@flamingogames.studio</a></p>
+        <p class="pill">Tip: set a real email later. This page collects no data.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="y"></span> Flamingo Games</div>
+      <div><a href="#">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
